@@ -1,0 +1,51 @@
+body {
+  margin: .5in 1in; 
+  font-size: 12pt;
+  font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-family: Helvetica; }
+h1 { font-size: 24pt; }
+h2 { font-size: 18pt; }
+
+li { padding-top: 3pt; }
+
+pre {  margin-left: .25in; font-size: 9pt; }
+
+tr.table-header {
+  font-weight: bold;
+}
+
+
+table { font-size: 11pt; background: #ccccff; }
+
+td { background: #ffdddd; padding: 3pt 6pt; }
+
+td.centered { text-align: center; }
+
+td.impl { font-weight: bold; }
+
+table.floater { float: left; margin: 0pt 12pt 0pt 6pt; width: 60%; }
+
+p.download-blurb { font-size: 11pt; }
+
+div.chunk { clear: both; padding-bottom: 2ex; }
+
+p.back { font-size: 11pt; }
+
+.note { 
+  border-width: thin;
+  border-style: solid;
+  margin: 1ex;
+  padding: 1ex;
+}
+
+
+div.copyright {
+        font-size: 10pt;
+        font-family: times-roman;
+        font-style: italic;
+        text-align: right;
+        padding-top: 24pt;
+}
+
+

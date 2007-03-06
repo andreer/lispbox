@@ -1,0 +1,179 @@
+Path: news.gmane.org!not-for-mail
+From: David Reitter <david.reitter@gmail.com>
+Newsgroups: gmane.emacs.devel
+Subject: Re: MacOSX emacs crashes after 10.4.3 update
+Date: Fri, 4 Nov 2005 20:14:30 +0000
+Lines: 111
+Approved: news@gmane.org
+Message-ID: <9E9973F2-1F72-4DAB-A7E3-0C718917F586@gmail.com>
+References: <EE5684DF-EC5D-446D-8D0C-A21265F385AE@raeburn.org>
+NNTP-Posting-Host: main.gmane.org
+Mime-Version: 1.0 (Apple Message framework v746.2)
+Content-Type: multipart/mixed; boundary="===============1535739518=="
+X-Trace: sea.gmane.org 1131135447 3538 80.91.229.2 (4 Nov 2005 20:17:27 GMT)
+X-Complaints-To: usenet@sea.gmane.org
+NNTP-Posting-Date: Fri, 4 Nov 2005 20:17:27 +0000 (UTC)
+Cc: emacs-devel@gnu.org
+Original-X-From: emacs-devel-bounces+ged-emacs-devel=m.gmane.org@gnu.org Fri Nov 04 21:17:23 2005
+Return-path: <emacs-devel-bounces+ged-emacs-devel=m.gmane.org@gnu.org>
+Original-Received: from lists.gnu.org ([199.232.76.165])
+	by ciao.gmane.org with esmtp (Exim 4.43)
+	id 1EY7xZ-0000r8-Ia
+	for ged-emacs-devel@m.gmane.org; Fri, 04 Nov 2005 21:14:49 +0100
+Original-Received: from localhost ([127.0.0.1] helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.43)
+	id 1EY7xY-0000HN-Tp
+	for ged-emacs-devel@m.gmane.org; Fri, 04 Nov 2005 15:14:48 -0500
+Original-Received: from mailman by lists.gnu.org with tmda-scanned (Exim 4.43)
+	id 1EY7xM-0000H8-4b
+	for emacs-devel@gnu.org; Fri, 04 Nov 2005 15:14:36 -0500
+Original-Received: from exim by lists.gnu.org with spam-scanned (Exim 4.43)
+	id 1EY7xK-0000Gw-H8
+	for emacs-devel@gnu.org; Fri, 04 Nov 2005 15:14:35 -0500
+Original-Received: from [199.232.76.173] (helo=monty-python.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.43) id 1EY7xK-0000Gt-9T
+	for emacs-devel@gnu.org; Fri, 04 Nov 2005 15:14:34 -0500
+Original-Received: from [64.233.182.205] (helo=nproxy.gmail.com)
+	by monty-python.gnu.org with esmtp (Exim 4.34) id 1EY7xJ-0003m0-VU
+	for emacs-devel@gnu.org; Fri, 04 Nov 2005 15:14:34 -0500
+Original-Received: by nproxy.gmail.com with SMTP id o60so180828nfa
+	for <emacs-devel@gnu.org>; Fri, 04 Nov 2005 12:14:32 -0800 (PST)
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=beta; d=gmail.com;
+	h=received:in-reply-to:references:mime-version:content-type:message-id:cc:from:subject:date:to:x-mailer;
+	b=UF8j80O4u5Vq6gtJRkW+otRW1GPYrOk7hpO6qXg85Yl85VNimnrj7OrypIxhYq8d1e8EStf08sNMwaYkI1c3u4/tyX/JTKV5p4y1U1pYVcXxPouo90FLZHdMXfWk9rHcGQ0ZpCVtIcLjmMy/+kfxVt+0CxWprqgXEGXDY9mlWSQ=
+Original-Received: by 10.48.80.15 with SMTP id d15mr81295nfb;
+	Fri, 04 Nov 2005 12:14:32 -0800 (PST)
+Original-Received: from ?129.215.174.81? ( [129.215.174.81])
+	by mx.gmail.com with ESMTP id q27sm1653847nfc.2005.11.04.12.14.31;
+	Fri, 04 Nov 2005 12:14:31 -0800 (PST)
+In-Reply-To: <EE5684DF-EC5D-446D-8D0C-A21265F385AE@raeburn.org>
+Original-To: Ken Raeburn <raeburn@raeburn.org>
+X-Mailer: Apple Mail (2.746.2)
+X-BeenThere: emacs-devel@gnu.org
+X-Mailman-Version: 2.1.5
+Precedence: list
+List-Id: "Emacs development discussions." <emacs-devel.gnu.org>
+List-Unsubscribe: <http://lists.gnu.org/mailman/listinfo/emacs-devel>,
+	<mailto:emacs-devel-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://lists.gnu.org/pipermail/emacs-devel>
+List-Post: <mailto:emacs-devel@gnu.org>
+List-Help: <mailto:emacs-devel-request@gnu.org?subject=help>
+List-Subscribe: <http://lists.gnu.org/mailman/listinfo/emacs-devel>,
+	<mailto:emacs-devel-request@gnu.org?subject=subscribe>
+Original-Sender: emacs-devel-bounces+ged-emacs-devel=m.gmane.org@gnu.org
+Errors-To: emacs-devel-bounces+ged-emacs-devel=m.gmane.org@gnu.org
+Xref: news.gmane.org gmane.emacs.devel:45414
+Archived-At: <http://permalink.gmane.org/gmane.emacs.devel/45414>
+
+
+--===============1535739518==
+Content-Type: multipart/signed; micalg=sha1; boundary=Apple-Mail-18-356732287;
+	protocol="application/pkcs7-signature"
+
+
+--Apple-Mail-18-356732287
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+On 4 Nov 2005, at 19:38, Ken Raeburn wrote:
+
+> I have an EmacsInstaller.dmg that I built on Sep 23, which  
+> installed an Emacs.app that worked just fine, up until earlier  
+> today when I updated my OS from 10.4.2 to 10.4.3.  It was built  
+> with mac/make-package, I think with defaults except for telling it  
+> to build a self-contained app.  Now it crashes at startup, and the  
+> CrashReporter log can't even give me a stack trace:
+
+This is unfortunate, but seems to be a known problem. Similarly,  
+binaries built on 10.4 generally don't run on 10.3.
+
+The Mac port contains a lot of code to support ancient systems /  
+system APIs like MacOS 8/9, apparently even without CarbonLib (never  
+tried, though), but there is pretty much no binary compatibility  
+between OS versions for Emacs.
+
+Have you tried setting the environment variable  
+MACOSX_DEPLOYMENT_TARGET=10.4 ?
+E.g.
+
+MACOSX_DEPLOYMENT_TARGET=10.4 ./make-package (...)
+
+I heard that helps you build binaries that run on all 10.4 versions.
+
+
+
+
+
+--Apple-Mail-18-356732287
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGOzCCAvQw
+ggJdoAMCAQICAw3xWjANBgkqhkiG9w0BAQQFADBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhh
+d3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVt
+YWlsIElzc3VpbmcgQ0EwHhcNMDUwMjAxMjM0NTA0WhcNMDYwMjAxMjM0NTA0WjBiMRAwDgYDVQQE
+EwdSZWl0dGVyMQ4wDAYDVQQqEwVEYXZpZDEWMBQGA1UEAxMNRGF2aWQgUmVpdHRlcjEmMCQGCSqG
+SIb3DQEJARYXZGF2aWQucmVpdHRlckBnbWFpbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDhuoehK+SM/uai1CMVwn3NgRTTwqPpEBKKrr0RKTwxn+B9KFHUK033x4cV1zF4NsHx
+t8OG7uk25ZRnBdf2xGC4Dmz2LiGKKhps+EkGzxFuKA3Q8WbXv7stEsS1ALl/mapcaOXTukzKGcu9
+wYFpmSi+PMc/61Th7A9T3bBNQcC2rKuILcaB3GM4ajekoEKFEPx/sTtMhGOLLwb5JcrWhxD0ADIA
+S1woY1PS3BJ4YTzPPkZMul46s7riV6CPd2gjnSn2aGvgXHTOHz7tOWmD4phVZ/THQ7nGLnIPy7gi
+HfXKvJ3IlM2NcHrgAGMNHaDwSWkdNdNhFe2rsoGTvLRF/fXVAgMBAAGjNDAyMCIGA1UdEQQbMBmB
+F2RhdmlkLnJlaXR0ZXJAZ21haWwuY29tMAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQEEBQADgYEA
+QxQdE8kyJWkgofiVLxnFYttKuNAkgP0vumRW7Jxc93TX56z3Y6j0pZiYFQcTOYkjdWFsPUSDdnIl
+X26P8/ZiCDosSNAeXHaizmoNjl+RkopgKxC7Th6hY0ZrEC5e0733wzeB8O8L05JX1x7KSMrjjX/s
+i5F5LSZMRP+o63kulIQwggM/MIICqKADAgECAgENMA0GCSqGSIb3DQEBBQUAMIHRMQswCQYDVQQG
+EwJaQTEVMBMGA1UECBMMV2VzdGVybiBDYXBlMRIwEAYDVQQHEwlDYXBlIFRvd24xGjAYBgNVBAoT
+EVRoYXd0ZSBDb25zdWx0aW5nMSgwJgYDVQQLEx9DZXJ0aWZpY2F0aW9uIFNlcnZpY2VzIERpdmlz
+aW9uMSQwIgYDVQQDExtUaGF3dGUgUGVyc29uYWwgRnJlZW1haWwgQ0ExKzApBgkqhkiG9w0BCQEW
+HHBlcnNvbmFsLWZyZWVtYWlsQHRoYXd0ZS5jb20wHhcNMDMwNzE3MDAwMDAwWhcNMTMwNzE2MjM1
+OTU5WjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRk
+LjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0EwgZ8wDQYJKoZI
+hvcNAQEBBQADgY0AMIGJAoGBAMSmPFVzVftOucqZWh5owHUEcJ3f6f+jHuy9zfVb8hp2vX8MOmHy
+v1HOAdTlUAow1wJjWiyJFXCO3cnwK4Vaqj9xVsuvPAsH5/EfkTYkKhPPK9Xzgnc9A74r/rsYPge/
+QIACZNenprufZdHFKlSFD0gEf6e20TxhBEAeZBlyYLf7AgMBAAGjgZQwgZEwEgYDVR0TAQH/BAgw
+BgEB/wIBADBDBgNVHR8EPDA6MDigNqA0hjJodHRwOi8vY3JsLnRoYXd0ZS5jb20vVGhhd3RlUGVy
+c29uYWxGcmVlbWFpbENBLmNybDALBgNVHQ8EBAMCAQYwKQYDVR0RBCIwIKQeMBwxGjAYBgNVBAMT
+EVByaXZhdGVMYWJlbDItMTM4MA0GCSqGSIb3DQEBBQUAA4GBAEiM0VCD6gsuzA2jZqxnD3+vrL7C
+F6FDlpSdf0whuPg2H6otnzYvwPQcUCCTcDz9reFhYsPZOhl+hLGZGwDFGguCdJ4lUJRix9sncVcl
+jd2pnDmOjCBPZV+V2vf3h9bGCE6u9uo05RAaWzVNd+NWIXiC3CEZNd4ksdMdRv9dX2VPMYIC5zCC
+AuMCAQEwaTBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECAw3xWjAJ
+BgUrDgMCGgUAoIIBUzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0w
+NTExMDQyMDE0MzFaMCMGCSqGSIb3DQEJBDEWBBToxbPbP033uTQnUpYmNVObMhWe0DB4BgkrBgEE
+AYI3EAQxazBpMGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5
+KSBMdGQuMSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIDDfFa
+MHoGCyqGSIb3DQEJEAILMWugaTBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1
+bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3Vp
+bmcgQ0ECAw3xWjANBgkqhkiG9w0BAQEFAASCAQATCs+C4U3ls1lxxDeef3kEiF6VV/b8Ok0jKyXU
+/29eKt67Jqmqh1MinxxF1MRw9lYFgipJ2UIi0gV+ZzpeOCHsntN1Bup547hjnOU/H2m0sjzQI16k
+JA6teCjm6zZQrANCkeaBGNA8C77T2wMJ6VGExwS2QXF0y9BgzEDwTtzm6fQVPT5lj2M7bLIxYHtC
+A2YIq2o8aWhn2s8v4TD7kk4TYF7+mAFN1iwVKMhYJlhATBdGxkIfweBHe96/4ZP2h04PpDqjYa/5
+SQAi5v5V7NAkvt5NZZUH3/8IL/IttnsI8r0BHtFDBi4ivjE68Xtf1XM5qaN3tn7/qNLl9L8LY7Bp
+AAAAAAAA
+
+--Apple-Mail-18-356732287--
+
+
+
+--===============1535739518==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Emacs-devel mailing list
+Emacs-devel@gnu.org
+http://lists.gnu.org/mailman/listinfo/emacs-devel
+--===============1535739518==--
+
+
+
+

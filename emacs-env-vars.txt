@@ -1,0 +1,28 @@
+`EMACSDATA'  ("/usr/local/share/emacs/22.0.50/etc/")
+     Directory for the architecture-independent files that come with
+     Emacs.  This is used to initialize the Lisp variable
+     `data-directory'.
+
+`EMACSDOC' ("/usr2/cvs/emacs/etc/")
+     Directory for the documentation string file, `DOC-EMACSVERSION'.
+     This is used to initialize the Lisp variable `doc-directory'.
+
+`EMACSLOADPATH'
+     A colon-separated list of directories(1) to search for Emacs Lisp
+     files--used to initialize `load-path'.
+
+`PATH'
+     A colon-separated list of directories in which executables reside.
+     This is used to initialize the Emacs Lisp variable `exec-path'.
+`EMACSPATH'
+     A colon-separated list of directories to search for executable
+     files--used to initialize `exec-path'.
+("/bin" "/usr/bin" "/usr/bin/X11" "/usr/local/bin" "/usr/bin" "/usr/X11R6/bin" "/usr/local/acl/acl62/" "/home/peter/bin" "/usr/local/acl/acl62/" "/usr/local/acl/acl62/" "/home/peter/bin" "/usr/local/acl/acl62/" "/usr/local/acl/acl62/" "/usr2/cvs/emacs/lib-src" "/usr/local/libexec/emacs/22.0.50/i686-pc-linux-gnu")
+
+`PWD'
+     If set, this should be the default directory when Emacs was
+     started.
+
+`SHELL'
+     The name of an interpreter used to parse and execute programs run
+     from inside Emacs.

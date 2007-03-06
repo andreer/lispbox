@@ -1,0 +1,9 @@
+VERSION=$(subst openmcl-,,$(THING))
+
+all: staging-archives/$(THING).tar.gz
+
+include GNUmakefile.base
+
+staging-archives/$(THING).tar.gz: binary-archives/openmcl-darwinppc-all-$(VERSION).tar.gz $(prefix)
+	cat $< | (cd $(prefix); tar xzf -; mv ccl $(THING))
+	(cd $(prefix); tar czf - $(THING)) > $@

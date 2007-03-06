@@ -1,0 +1,17 @@
+include GNUmakefile.vars
+
+lisps := clisp
+
+ifneq ($(os),Windows)
+lisps += allegro sbcl
+endif
+
+ifeq ($(os),Darwin)
+lisps += openmcl
+endif
+
+all: $(lisps)
+
+$(lisps):
+#	$(MAKE) clean all LISPBOX_LISP=$@ NO_EMACS=true
+	$(MAKE) clean all LISPBOX_LISP=$@

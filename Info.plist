@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>*</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>NSStringPboardType</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>****</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>lispbox.sh</string>
+	<key>CFBundleIconFile</key>
+	<string>Emacs.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.common-lisp.LIAB</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>LIAB</string>
+	<key>CFBundleVersion</key>
+	<string>0.2</string>
+</dict>
+</plist>

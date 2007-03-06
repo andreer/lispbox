@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Lispbox Installation</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+<h1>Full Lispbox Installation</h1>
+
+<p>After you've <a href="download.html">downloaded</a>
+a <a href="lispbox.html">Lispbox</a> distribution, how exactly you
+install it depends on which operating system you're using.</p>
+
+
+<h2>GNU/Linux</h2>
+
+<p>On GNU/Linux the distribution comes as a gzipped tar file that
+unpacks into a directory named lispbox-&lt;version&gt;. To install it,
+you simply need to save the downloaded file and untar it
+with <code>tar xzf</code>. For example, if you want to install Lispbox
+in your home directory, save the downloaded file in your home
+directory, <code>cdy</code> to your home directory and execute this
+command:</p>
+
+<pre>
+  tar xzf lispbox-0.1.tar.gz
+</pre>
+
+<p>This will create a <code>lispbox-0.1</code> directory in your home
+directory. In a full Lispbox disttribution, this directory will
+contain a script <code>lispbox.sh</code>. You can then either
+add <code>lispbox-0.1</code> to your <code>PATH</code> or you can
+invoke <code>lispbox.sh</code> by specifying the complete path when
+you invoke it:</p>
+
+<pre>
+  bash$ /home/peter/lispbox-0.1/lispbox.sh
+</pre>
+
+<p>This script will start Emacs and launch the installed Common Lisp
+in SLIME.</p>
+
+<p>In a no-emacs distribution, there is no startup script. Instead you
+need to 
+
+
+<h2>Mac OS X</h2>
+
+<p>On OS X the distribution comes as a disk image. When you download
+it it should be mounted automatically. Double-click the
+<code>Lispbox.pkg</code> icon to run the installer. It will install
+Lispbox in <code>/Applications/</code>. Once the installation is
+complete, you can double click the <code>Emacs</code> icon in the
+new <code>Lispbox</code> directory to launch Emacs and start the
+installed Common Lisp implementation in SLIME.
+
+<h2>Windows</h2>
+
+<p><i>Not yet available</i></p>
+
+
+<h1>No-Emacs Lispbox Installation</h1>
+
+<div class='copyright'>Copyright &copy; 2005, Peter Seibel</div>

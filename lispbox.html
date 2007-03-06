@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>Lispbox</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+<h1>Lispbox</h1>
+
+<p>Lispbox is a version of Lisp in a Box, which was originally created
+by Matthew Danish and Mikel Evins, customized for use
+with <i><a href="http://www.gigamonkeys.com/book/">Practical Common
+Lisp</a></i>.</p>
+
+<p>The purpose of Lispbox (and Lisp in a Box) is to get you up and
+running in a good Lisp environment as quickly as possible. When you
+start Lispbox it launches the text editor Emacs with SLIME (the
+Superior Lisp Interaction Mode for Emacs) already installed and starts
+Common Lisp for you. Lisp in a Box is designed to not interfere with
+your existing Emacs installation, if you have one. If you are already
+an Emacs user, you may wish to install the no-Emacs version designed
+to work with an existing Emacs installation.</p>
+
+<p>For more about what Lispbox is, read on; otherwise hop down to
+the <b><a href="#download">download</a></b> section and start
+downloading.</p>
+
+<h2>What Lispbox gives you</h2>
+
+<p>A full Lispbox distribtion contains:</p>
+
+<ul>
+  <li>Emacs, the powerful, customizable text editor</li>
+  <li>A Common Lisp implementation of your choosing</li>
+  <li>SLIME, the Superior Lisp Integration Mode for Emacs</li>
+  <li>ASDF, Another System Definition Facility, used to load Common
+  Lisp libraries.</li>
+  <li>The practical code
+  from <i><a href="http://www.gigamonkeys.com/book/">Practical Common
+  Lisp</a></i> ready to be loaded using ASDF.</li>
+  <li>Some glue code to make it all a bit easier to use.</li>
+</ul>
+
+<p>When you run the Lispbox application it will start Emacs and start
+Common Lisp in SLIME and you're ready to start hacking. You can use
+ASDF to load the various libraries and applications from <i>Practical
+Common Lisp</i>.</p>
+
+<p>For instance, to load the test-framework from Chapter 9 you can
+type:</p>
+
+<pre>
+  (oos 'load-op :test-framework)
+</pre>
+
+<p>at the REPL prompt. Or you can use the SLIME
+shortcut <code>load-system</code> available by typing a comma followed
+by <code>load-system</code> and then, when prompted, the
+name <code>test-framework</code>. (Coming soon: the abilility to load
+the code from a specific chapter via a system named chapter-X.)</p>
+
+<p>As of version 0.3 there are also ASD files named chapter-<i>X</i>
+for each chapter. So you can, for instance, load the test framework
+codeby typing:</p>
+
+<pre>
+  (oos 'load-op :chapter-9)
+</pre>
+
+
+<h2>Lispbox special features</h2>
+
+<p>The environment provided by Lispbox has a few special features
+beyond what you'd get from combining Emacs, SLIME, ASDF, and a Common
+Lisp implementation. These features are designed to make it easier to
+use, particularly for new Lispers.</p>
+
+<ul>
+
+<li>The package <code><b>CL-USER</b></code> is "cleaned" of any
+implementation-dependent packages. This makes it easier to follow
+along the code in the book (particularly in the early chapters before
+I've introduced packages) without running into name conflicts with
+names exported from implementaton-defined packages that might
+otherwise be inherited by <code><b>CL-USER</b></code>. This does have
+the consequence that certain implementation-specific extensions are
+not automatically available. But they can easily be added back once
+you know about Common Lisp's package system.</li>
+
+<li>Lispbox includes some extensions to ASDF that modify how it finds
+ASD files and where it stores the files generated
+by <code><b>COMPILE-FILE</b></code>. The former makes it slightly
+easier to install new Common Lisp libraries and, more important,
+provides a mechanism that works the same on OS X, GNU/Linux, and
+Windows. The latter makes it easier to experiment with different Lisp
+implementations since it causes the files generated
+by <code><b>COMPILE-FILE</b></code> to be placed in an
+implementation/operating system/architecture dependent directory.</li>
+
+</ul>
+
+<a name="download"><h2>Download Lispbox</h2></a>
+
+<p><a href="lispbox.html">Lispbox</a> is designed to given you
+everything you need to get up and running, hacking Common Lisp, in one
+easy-to-install download. However you do need to pick the right
+version of Lispbox for the OS you are using and the Common Lisp
+implementation you want to try.</p>
+
+<p>All of the Lisp implementations available here are high-quality
+implementations that can be used for learning Lisp and for writing
+real applications.  However if you want to be able to run all the
+practical examples
+from <a href="http://www.gigamonkeys.com/book/"><i>Practical Common
+Lisp</i></a> the easiest path is to use Allegro since it supports both
+Unicode and threads and has AllegroServe built in. CLISP has excellent
+Unicode support but no threads. SBCL added Unicode in version 0.8.17
+but there are still, as of this writing, a few wrinkles to work out.
+And it supports threads only on GNU/Linux 2.6 systems running on x86.
+OpenMCL supports native threads but not Unicode. The ID3 parser
+developed
+in <a href="http://www.gigamonkeys.com/book/chapter-25.html">Chapter
+25</a> works best in Lisps that support Unicode but will work fine in
+non-Unicode Lisps as long as none of the MP3 files you want to parse
+contain Unicode strings. And the Shoutcast server developed in
+<a href="http://www.gigamonkeys.com/book/chapter-28.html">Chapters
+28</a> and
+<a href="http://www.gigamonkeys.com/book/chapter-29.html">29</a>
+requires an implementation that supports multiple threads.</p>
+
+<div class="chunk">
+
+<table class="floater">
+<tr class="table-header">
+  <td></td>
+  <td class="centered">OS X (10.4/PPC)</td>
+  <td class="centered">OS X (10.4/x86)</td>
+  <td class="centered">GNU/Linux x86</td>
+  <td class="centered">Windows</td>
+</tr>
+<tr>
+  <td class="impl">Allegro</td>
+  <td class="centered"><a href="http://www.franz.com/ftp/pub/acl80express/macosx/LispboxInstaller-0.7-with-acl80_express.dmg">8.0 (<a href="http://www.franz.com/PracticalCommonLisp">get license</a>)</a></td>
+  <td class="centered"><a href="http://www.franz.com/ftp/pub/acl80express/macosx86/LispboxInstaller-0.7-with-acl80_express.dmg">8.0 (<a href="http://www.franz.com/PracticalCommonLisp">get license</a>)</a></td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/linux/lispbox-0.7-acl70_trial.tar.gz">7.0 (<a href="http://www.franz.com/PracticalCommonLisp">get license</a>)</a></td>
+  <td class="centered"><a href="http://www.franz.com/ftp/pub/acl80express/windows/lispbox07.exe">8.0 (<a href="http://www.franz.com/PracticalCommonLisp">get license</a>)</a></td>
+</tr>
+<tr>
+  <td class="impl">SBCL</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.7-with-sbcl-0.9.7.dmg"> 0.9.7</a></td>
+  <td class="centered">&mdash;</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/linux/lispbox-0.7-sbcl-0.9.7.tar.gz">0.9.7</a></td>
+  <td class="centered">&mdash;</td>
+</tr>
+<tr>
+  <td class="impl">OpenMCL</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.7-with-openmcl-1.0.dmg">1.0</a></td>
+  <td class="centered">&mdash;</td>
+  <td class="centered">&mdash;</td>
+  <td class="centered">&mdash;</td>
+</tr>
+<tr>
+  <td class="impl">CLISP</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.7-with-clisp-2.35.dmg">2.35</a></td>
+  <td class="centered">&mdash;</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/linux/lispbox-0.7-clisp-2.36.tar.gz">2.36</a></td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/windows/lispbox-0.7-clisp-2.37.zip">2.37</a></td>
+</tr>
+
+</table>
+
+<p class="download-blurb">To choose a Lisbox, pick the operating
+system you are running and the Common Lisp implementation you want to
+try. The numbers in the table's cells are the version of the Lisp
+implementation. If you choose Allegro on a OS other than Windows you
+will need to get a free licence from Franz's web site; click
+on <a href="http://www.franz.com/PracticalCommonLisp">get license</a>
+to go to the Franz web site. Lispbox will help you install the license
+the first time you run it. On Windows the installer will obtain and
+install the license for you.</p>
+
+</div>
+
+<p>Since Lispbox is designed primarily for folks who haven't used
+Emacs before (or who just want to try out Lisp without mucking with
+their existing Emacs setup) it is designed to work completely
+standalone. This should increase the liklihood that it'll Just Work.
+However this does mean that it doesn't load your <code>~/.emacs</code>
+file if you have one. Of course if you know enough to have
+a <code>~/.emacs</code> you can probably figure out how to change
+that. <i>Note: I used to provide Lispbox distributions intended to be
+loaded into an existing Emacs installation. I'm dropping support for
+those for the time being as very few people seemed to use them and
+they mostly just confused people.</i></p>
+
+
+<div class='copyright'>Copyright &copy; 2005, Peter Seibel</div>

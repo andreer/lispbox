@@ -1,0 +1,9 @@
+#
+# Common bits needed by various component make files.
+#
+
+include GNUmakefile.vars
+
+$(prefix) staging:
+	mkdir -p $@
+

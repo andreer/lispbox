@@ -1,0 +1,57 @@
+
+;; BEGINNING OF FILE
+
+;; This text should be saved to a file named devel.lic
+;; in the Allegro directory.  Make sure the first line
+;; in the file is ``;; BEGINNING OF FILE'', and that
+;; there is no other text preceding the first
+;; semi-colon (;) on that line.  Make sure the last
+;; line in the file is ``;; END OF FILE''.
+
+;; This license file is for version 6.2 of Allegro
+;; CL.  It is not possible to use it with other
+;; versions of Allegro CL.
+
+;; This license is valid on any computer in your
+;; possession.
+
+;; This file contains the license necessary to execute
+;; Allegro CL.  Preceding the license there is a
+;; comment describing the contents of the encrypted
+;; block of text.  Included in the encrypted text is
+;; information identifying the licensee.
+
+;; Once your license expires, you can update your
+;; license and continue using Allegro CL by running
+;; the `newlicense' program.  On Windows, there is a
+;; menu item on the Start menu for running
+;; `newlicense'.   On both UNIX and Windows you can
+;; find the `newlicense' program in the Allegro CL
+;; directory.
+
+;; If you have questions or comments, please contact
+;; us at support@franz.com (+1 510-452-2000, Franz
+;; Inc., 555 12th Street, Suite 1450, Oakland, CA
+;; 94607, USA).
+;;
+;; License created on March 15, 2005, 11:39:33.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ACL version: 6.2
+;; ACL type: trial
+;; Architecture: Linux, Redhat 6.x, 7.x, 8.x and 9, 32-bit
+;; Licensed to: Peter Seibel, Gigamonkeys
+;; Email address: peter@gigamonkeys.com
+;; Expiration date: 2005-5-14 23:59:00
+;; Features: generate-application runtime
+(:lisp
+ "msQySATCWqE39ekxdVXsp81tT9ysUgXHqgoWOB763jxkGn5q5HbH
+hUg2O7h4zMHNg96SSAnKyiOQEfQ3hoTd5T7PZkWmdCDSfPz9p6hG
+dRFC7WmD6OZoBr5G2JuXTSuAXJ8COto7OuqeNgdDHIEOk3kjUuaT
+3SsnLS/nkuyKFA82pDI3YBLqnSFT4G99288Gv5TeYik8WD4QCM2x
+6315VGRzmUDfT6exXYrntr1Gg3qurf+zipM9bBQbwtYl/cfTEtx2
+d1M0MwsEuzvY0OwbssKu1TU2edoxI8tNoK9lFKwVl+R5pyGe1sij
+HRwn0xCERynV4devPaUKrgoYZo30Tl4=")
+
+;; END OF FILE

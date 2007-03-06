@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Download Lispbox</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+<h1>Download Lispbox</h1>
+
+<p><a href="lispbox.html">Lispbox</a> is designed to given you
+everything you need to get up and running, hacking Common Lisp, in one
+easy-to-install download. However you do need to pick the right
+version of Lispbox for the OS you are using and the Common Lisp
+implementation you want to try. However you can also download
+individual Common Lisp implementations in Lispbox-ready form to add to
+an existing Lispbox installation so the choice of Lisp implementation
+you start with doesn't matter a great deal.</p>
+
+<p><b>Note on choosing a Lisp implementation</b>. All of the Lisp
+implementations available here are high-quality implementations that
+can be used for learning Lisp and for writing real applications.
+However if you want to be able to run all the practical examples
+from <a href="http://www.gigamonkeys.com/book/"><i>Practical Common
+Lisp</i></a> the easiest path is to use Allegro since it supports both
+Unicode and threads and has AllegroServe built in. CLISP has excellent
+Unicode support but no threads. SBCL added Unicode in version 0.8.17
+but there are still, as of this writing, a few wrinkles to work out.
+And it supports threads only on GNU/Linux 2.6 systems running on x86.
+OpenMCL supports native threads but not Unicode. The ID3 parser
+developed
+in <a href="http://www.gigamonkeys.com/book/chapter-25.html">Chapter
+25</a> works best in Lisps that support Unicode but will work fine in
+non-Unicode Lisps as long as none of the MP3 files you want to parse
+contain Unicode strings. And the Shoutcast server developed in
+<a href="http://www.gigamonkeys.com/book/chapter-28.html">Chapters
+28</a> and
+<a href="http://www.gigamonkeys.com/book/chapter-29.html">29</a>
+requires an implementation that supports multiple threads.</p>
+
+<div class="chunk">
+
+<table class="floater">
+<tr class="table-header">
+  <td></td>
+  <td class="centered">OS X (10.4)</td>
+  <td class="centered">GNU/Linux x86</td>
+  <td class="centered">Windows</td>
+</tr>
+<tr>
+  <td class="impl">Allegro (<a href="http://www.franz.com/PracticalCommonLisp">get license</a>)</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.7-with-acl70_trial.dmg">7.0</a></td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/linux/lispbox-0.6.1-acl62_trial.tar.gz">6.2</a></td>
+  <td class="centered">not yet available</td>
+</tr>
+<tr>
+  <td class="impl">SBCL</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.7-with-sbcl-0.9.7.dmg"> 0.9.7</a></td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/linux/lispbox-0.6.1-sbcl-0.9.0.tar.gz">0.9.0</a></td>
+  <td class="centered">&mdash;</td>
+</tr>
+<tr>
+  <td class="impl">OpenMCL</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.7-with-openmcl-1.0.dmg">1.0</a></td>
+  <td class="centered">&mdash;</td>
+  <td class="centered">&mdash;</td>
+</tr>
+<tr>
+  <td class="impl">CLISP</td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/osx/LispboxInstaller-0.6.1-with-clisp-2.33.2.dmg">2.33.2</a></td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/linux/lispbox-0.6.1-clisp-2.33.2.tar.gz">2.33.2</a></td>
+  <td class="centered"><a href="http://common-lisp.net/pcl/windows/lispbox-0.6-clisp-2.34.zip">2.34</a></td>
+</tr>
+
+</table>
+
+<p class="download-blurb">To choose the appropriate Lisbox pick the
+operating system you are running on and the Common Lisp implementation
+you want to try. The numbers in the table's cells are the version of
+the Lisp implementation. If you choose Allegro you will need to get a
+free licence from Franz's web site; click
+on <a href="http://www.franz.com/PracticalCommonLisp">get license</a>
+to go to the Franz web site. Lispbox will help you install the license
+the first time you run it.</p>
+
+</div>
+
+
+<div class='copyright'>Copyright &copy; 2005, Peter Seibel</div>

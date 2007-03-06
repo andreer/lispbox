@@ -1,0 +1,2 @@
+http://ftp.franz.com/ftp/pub/acl62trial/redhat6/acl62_trial.bz2
+http://ftp.franz.com/ftp/pub/acl62trial/macosx103/acl62_trial.bz2

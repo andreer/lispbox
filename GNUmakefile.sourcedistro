@@ -1,0 +1,18 @@
+#
+# N.B. Your svn client must be updated to the revion you want to build.
+#
+
+major    := 0
+minor    := 7
+url      := $(shell svn info | perl -ne '/URL: (.+)/ and print $$1, $$/')
+revision := $(shell svn info | perl -ne '/Revision: (\d+)/ and print $$1, $$/')
+version  := $(major).$(minor).$(revision)
+
+all: lispbox-$(version).tar.gz
+
+lispbox-$(version).tar.gz: /tmp/lispbox-$(version)
+	(cd /tmp; tar czf - lispbox-$(version)) > $@
+
+/tmp/lispbox-$(version):
+	svn export -r $(revision) $(url) $@
+

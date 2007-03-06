@@ -1,0 +1,116 @@
+-*- mode: outline; -*-
+
+* How this all works
+
+The basic theory of building Lispbox is to build or unpack all the
+individual components (emacs, a Lisp, SLIME, etc.) from official
+distributions (preferred) or sometimes from CVS sources and then knit
+them together.
+
+For each component we start from some archive of either the sources or
+a binary distribution, usually a tar.gz or tar.bz2 file. We need these
+archives to be named so that they unpack into a directory named the
+same as the archive minus the .tar.gz, or whatever, extension. If we
+want to build components from CVS sources, we use the shell script
+make-distro-from-cvs.sh to make a tar.gz from the contents of a CVS
+directory with the current date and time as a version number.
+
+* Caveats
+
+** Libraries
+
+On GNU/Linux some of the components depend on libraries that I presume
+are dynamically linked to the executable. Which means that the
+binaries we provide won't run on boxes that don't have those libraries
+installed. Here are a couple of libs I know I installed in order to
+get things working on my Ubuntu Edge Eft box.
+
+*** For emacs
+
+libxt-dev (the X toolkit intrinsics). The non-dev libs were already
+installed, by default I think, so maybe this will be fine, at least
+for Ubuntu users.
+
+*** For CLISP
+
+libsigsegv-dev. This one should get statically linked into the CLISP
+exe according to the libsigsegv web page.
+
+
+** Emacs
+
+The emacs distros version numbers are confusing. The current version
+of Emacs is essentially the 21.3 version originally released 24 March
+2003. However in February 2006 a bug was discovered that lead to a
+serious security hole on Unix platforms which caused Stallman to
+release a 21.4 release which was really just 21.3 plus a patch for
+that one bug. (This caused all kinds of chaos because everyone was
+expecting the long-awaited (and still waiting) Emacs release to be
+21.4.) However since the bug was Unix specific the Windows binary
+releases, which I use for building the Windows Lispboxen, were not
+rebuilt and thus version number of the latest emacs on Windows. To
+make matters worse, for reasons I don't recall, the 21.4 source
+archive downloadable from the FSF is called "emacs-21.4a.tar.gz" even
+though it still unpacks into a directory named "emacs-21.4". So to
+prepare to build a Unix Lispbox you need to download the 21.4a archive
+and rename it to "emacs-21.4.tar.gz" and set GNU_LINUX_EMACS_VERSION
+to 21.4 in GNUmakefile. OS X you have to use CVS emacs (which will be
+22.0 if and when it is ever released.) because 21.4 doesn't build out
+of the box on OS X. (When I was originally building Lispbox in 2005 I
+figured 22.0 would be released at any moment and hoped it would happen
+before my book was published so I could build Lispboxen on Windows,
+GNU/Linux, and OS X all using the same--and an officially
+released--version of Emacs. Two years later the world is still
+awaiting 22.0 and 21.3, a.k.a 21.4 is weeks away from being four-years
+old.)
+
+
+* Todo
+
+
+- Add entries to emacs's dir file to add a Lisp in a Box section with
+  the info files for SLIME and such Lisp's as have them.
+
+- Make HTML index to HTML docs.
+
+- Add hook to SLIME (if there isn't one) when it shuts down. Then hook
+  it up to quit emacs when you quit SLIME.
+
+- Figure out how SLIME finds ~/.swank.lisp so it can find it in the
+  lispbox dir.
+
+- Add foo to SLIME doc makefile to cleanup docs directory after
+  building. And use it.
+
+- Add OpenMCL to OS X build.
+
+- How to find Lisps relative to Emacs? Set LISPBOX_HOME environment
+  variable. Then set variables elisp variables with the names of each
+  implementation.
+
+- Implement lispbox-install-allegro-license function.
+
+- Make .asd files automatically open in lisp-mode.
+
+- SBCL needs SBCL_HOME set.
+
+- CLISP works from anywhere.
+
+- To build an installable .pkg on Emacs seems like we can take apart
+  the Emacs.pkg we get by mounting the EmacsInstaller.dmg (much like
+  we already do) and then messing with the contents of Emacs.app and
+  packaging it back up. The only trick is that then all files,
+  including SLIME and the Common Lisp implementation need to go inside
+  Emacs.app (or Lispbox.app) which is maybe not as cool. Probably the
+  right thing to do is to make a "metapackage". Hmmm.
+
+- Need to do something about (require 'aserve) for non-Allegro lisps.
+  Include Portable Allegro Serve in those lisps.
+
+- *silence-mp3* in Chapter29/playlist.lisp needs to be set before
+   :mp3-browser system can be loadad. Just document?
+
+- Enhance SLIME to compile files into fasl directories like ASDF-EXTENSIONS does.
+
+- NoEmacs Lispbox shouldn't start Lisp right away. (I.e. lispbox.el
+  needs to be a bit different.)

@@ -1,0 +1,64 @@
+This is the source distribution of Lispbox. This is only useful for
+people who want to build a Lispbox distribution. To build a distro you
+will need GNU make, and a Bourne shell (such as bash).
+
+Additionally you need the various components that make up Lispbox, in
+either source or binary form. The basic idea behind building a Lispbox
+distribution is that we start from the source or binary distributions
+of the various components and install them (building if necessary)
+into a staging directory to which we then add various bits of
+Lispbox-specific glue code and then package the whole thing up in an
+appropriate manner for a given operating system--as a tar.gz on
+GNU/Linux, as a .dmg on OS X, and as double-clickable installer on
+Windows.
+
+The GNUmakefile included here is used to build each component and then
+assemble the components into a Lispbox distribution with the Lispbox
+specific glue code. To speed the build process the main makefile looks
+first for a pre-built version in the directory binary-archives. For
+some components, which are available only in binary form, this
+pre-built version may be the actual binary archive provided by the
+component's "vendor". For others, it may be a tar.gz built from the
+source of the compenent by the Lispbox GNUmakefile. For each component
+that can be built from source and included in Lispbox there is an
+auxilliary GNUmakefile (e.g. GNUmakefile.emacs, GNUmakefile.sbcl,
+etc.) that knows how to unpack and build that component and eventually
+produce a tar.gz in binary-archives that can be unpacked in the
+Lispbox staging directory. (This dramatically speeds up the time it
+takes to build a Lispbox distro by avoiding repeatedly building
+components whose source has not changed.)
+
+ Allegro: Allegro is only available in binary form. To build an
+ Allegro Lispbox you need to download the appropriate distribution
+ from Franz and put it in the binary-archives directory. The Lispbox
+ GNUmakefile knows how to unpack it into the right place. Users of an
+ Allegro-based Lispbox will need to obtain a license from Franz. When
+ an Allegro-based Lispbox starts up it checks whether there is a
+ licenes file installed in the right place and, if there isn't, asks
+ the user where they saved the license file and installs it in the
+ right place.
+
+ OpenMCL: OpenMCL is tricky to build from source. Thus I prefer to use
+ the binary distributions provided by the OpenMCL developers. Thus the
+ main Lispbox GNUmakefile treats OpenMCL like Allegro, as a component
+ that it knows how to unpack into the right place. Download the binary
+ distribution you want to use and put it in the binary-archives
+ directory.
+
+ SBCL: To build SBCL you need a version of SBCL already installed and
+ in your path. (SBCL can, in fact, be cross compiled with other Common
+ Lisp implementations but the Lispbox makefiles don't know how to take
+ advantage of that fact.) So you may need to download a binary SBCL
+ distribution and install it in the normal way and then download a
+ source distribution and put it in the source-achives directory.
+
+ CLISP: Since CLISP can be built from scratch using just a C compiler
+ all you need to build a CLISP Lispbox is a source distribution of
+ CLISP which you should save in the source-archives directory. The
+ main GNUmakefile knows how to take it from there.
+
+ SLIME:
+
+    http://common-lisp.net/project/slime/slime-1.2.tar.gz
+ 
+

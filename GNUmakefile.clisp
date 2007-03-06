@@ -1,0 +1,34 @@
+
+all: staging-archives/$(THING).tar.gz
+
+include GNUmakefile.base
+
+ifneq (,$(findstring $(os),Linux Darwin))
+
+staging-archives/$(THING).tar.gz: $(prefix)/$(THING)
+	(cd $(prefix); tar czf - $(THING)) > $@
+
+$(prefix)/$(THING): staging/$(THING)/src/clisp
+	cd staging/$(THING)/src; $(MAKE) install
+
+staging/$(THING)/src/clisp: staging/$(THING)
+	cd staging/$(THING); ./configure --prefix=$(prefix)/$(THING) --build --without-readline
+
+# For 2.36
+#	cd staging/$(THING); ./configure --prefix=$(prefix)/$(THING) --build --without-readline --ignore-absence-of-libsigsegv
+
+staging/$(THING): source-archives/$(THING).tar.gz  staging
+	cat $< | (cd staging; tar xzf -)
+
+endif
+
+ifeq ($(os),Windows)
+
+staging-archives/$(THING).tar.gz: staging/$(THING)
+	(cd staging; tar czf - $(THING)) > $@
+
+staging/$(THING): binary-archives/$(THING)-win32-no-pg.zip staging
+	unzip $< -d staging/
+	chmod +x $@/full/lisp.exe
+
+endif

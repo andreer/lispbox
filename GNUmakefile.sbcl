@@ -1,0 +1,15 @@
+
+all: staging-archives/$(THING).tar.gz
+
+include GNUmakefile.base
+
+staging-archives/$(THING).tar.gz: $(prefix)/$(THING)
+	(cd $(prefix); tar czf - $(THING)) > $@
+
+$(prefix)/$(THING): source-archives/$(THING)-source.tar.bz2  staging
+	cat $< | (cd staging; tar xjf -)
+	cd staging/$(THING); $(SH) make.sh; INSTALL_ROOT=$@ $(SH) install.sh
+
+foo:
+	(cd tests && $(SH) run-tests.sh); \
+	(cd doc/manual && $(MAKE) -k)
