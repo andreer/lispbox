@@ -15,9 +15,64 @@ want to build components from CVS sources, we use the shell script
 make-distro-from-cvs.sh to make a tar.gz from the contents of a CVS
 directory with the current date and time as a version number.
 
+These archives are placed in one of two directories that you need to
+create in the lispbox directory, source-archives or binary-archives.
+When building a component from source the appropriate archive is
+unpacked into a directory, staging, that the main makefile will create
+as needed. The contents are then built and repackaged as a tar.gz in
+the staging-archives directory. Binary archives are copied directly to
+staging-archives. Once all the components are built, the whole Lispbox
+directory structure is created and the staging-archives are unpacked
+into the appropiate places in that structure. We keep the
+staging-archives as compressed tarfiles to save disk space when we
+have Emacs and a bunch of Common Lisp implementations all built and
+ready to package.
+
+The compents needed are:
+
+ - Emacs. Download the source tar from FSF for Linux, the binary
+   distro from FSF for Windows, and make an archive from CVS on
+   savanah.gnu.org for OS X:
+
+    cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/emacs co emacs
+
+ - SLIME. Make an archive from CVS on common-lisp.net.
+
+      To checkout from CVS you must first login to the repository:
+
+        export CVSROOT=:pserver:anonymous@common-lisp.net:/project/slime/cvsroot
+        cvs login
+
+      Enter anonymous when prompted for the password. You can then
+      check out the latest version with:
+
+        cvs checkout slime
+
+ - A Lisp. CLISP and SBCL can be built from source (though building
+   SBCL needs a working Lisp in your path.) Allegro is built from
+   binary distros (though in reality Kevin Layer at Franz does most of
+   the building of Allegro Lispboxen these days). And OpenMCL is
+   currently built from a binary archive.
+
+ - The practicals code from Practical Common Lisp. Available at:
+
+     http://www.gigamonkeys.com/book/practicals-1.0.3.tar.gz
+
+   Even though it is just source code, it is placed in the
+   binary-archives directory because it is not source we need to
+   build. (It's not clear the source-archive/binary-archive
+   distinction is that valuable since the details of how to
+   build/unpack/whatever the archives is already encoded in the
+   various per-component GNUmakefile.* files.
+
+ - Portable aserve. Source distro available from sourceforge. Like the
+   practicals source, it is considered a binary-archive for our
+   purposes since we don't build it--we just unpack it in the right
+   place.
+
 * Caveats
 
-** Libraries
+** C Libraries
 
 On GNU/Linux some of the components depend on libraries that I presume
 are dynamically linked to the executable. Which means that the
