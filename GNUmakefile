@@ -9,13 +9,20 @@
 
 include GNUmakefile.vars
 
-LISPBOX_LISP            := sbcl
+#LISPBOX_LISP            := sbcl
+LISPBOX_LISP            := openmcl
 GNU_LINUX_EMACS_VERSION := 21.4
 WINDOWS_EMACS_VERSION   := 21.3
 CLISP_VERSION           := 2.41
 ALLEGRO_VERSION         := 70_trial
 SBCL_VERSION            := 1.0.3
-OPENMCL_VERSION         := 1.0
+#OPENMCL_VERSION         := 1.0
+OPENMCL_VERSION         := 070408
+OPENMCL_PLATFORM        := darwinx8664
+#OPENMCL_PLATFORM        := darwinppc
+OPENMCL_RELEASE         := snapshot
+#OPENMCL_SCRIPT         	:= openmcl
+OPENMCL_SCRIPT         	:= openmcl64
 SLIME_VERSION           := 20070306.205402
 PRACTICALS_VERSION      := 1.0.3
 PORTABLEASERVE_VERSION  := 1.2.35
@@ -33,7 +40,7 @@ endif
 clisp   := clisp-$(CLISP_VERSION)
 allegro := acl$(ALLEGRO_VERSION)
 sbcl    := sbcl-$(SBCL_VERSION)
-openmcl := openmcl-$(OPENMCL_VERSION)
+openmcl := openmcl-$(OPENMCL_PLATFORM)-$(OPENMCL_RELEASE)-$(OPENMCL_VERSION)
 
 lisp       := $($(LISPBOX_LISP))
 slime      := slime-$(SLIME_VERSION)
@@ -41,6 +48,7 @@ practicals := practicals-$(PRACTICALS_VERSION)
 
 ifeq ($(os),Darwin)
 lispbox_script_dir := $(prefix)/Emacs.app/Contents/MacOS
+emacs_lisp    := $(prefix)/Emacs.app/Contents/Resources/lisp
 emacs_site_lisp    := $(prefix)/Emacs.app/Contents/Resources/site-lisp
 export LISPBOX_HOME_RELATIVE := /../../..
 export EMACS_EXE := Emacs.app/Contents/MacOS/Emacs
@@ -96,6 +104,7 @@ $(LISPBOX_HOME)-source.tar.gz:
 	cp GNUmakefile.vars $(prefix)
 	cp Info.plist $(prefix)
 	cp OSXpackage.mk $(prefix)
+	cp OSXdiskImage.mk $(prefix)
 	cp README $(prefix)
 	cp README.source $(prefix)
 	cp write-lispbox-el.sh $(prefix)
@@ -131,17 +140,25 @@ $(distro): lispbox
 	(cd $(TOP); tar czf - $(LISPBOX_HOME)) > $@
 endif
 
+#ifeq ($(os),Darwin)
+#distro_with_emacs := LispboxInstaller-$(LISPBOX_VERSION)-with-$(lisp).dmg
+#distro_no_emacs   := LispboxInstallerNoEmacs-$(LISPBOX_VERSION)-with-$(lisp).dmg
+#distro_just_lisp  := LispboxInstallerJustLisp-$(LISPBOX_VERSION)-$(lisp).dmg
+
 ifeq ($(os),Darwin)
-distro_with_emacs := LispboxInstaller-$(LISPBOX_VERSION)-with-$(lisp).dmg
-distro_no_emacs   := LispboxInstallerNoEmacs-$(LISPBOX_VERSION)-with-$(lisp).dmg
-distro_just_lisp  := LispboxInstallerJustLisp-$(LISPBOX_VERSION)-$(lisp).dmg
+distro_with_emacs := Lispbox-$(LISPBOX_VERSION)-with-$(lisp).dmg
+distro_no_emacs   := LispboxNoEmacs-$(LISPBOX_VERSION)-with-$(lisp).dmg
+distro_just_lisp  := LispboxJustLisp-$(LISPBOX_VERSION)-$(lisp).dmg
 
 distro := $(if $(JUST_LISP),$(distro_just_lisp),$(if $(NO_EMACS),$(distro_no_emacs),$(distro_with_emacs)))
 
 distro: $(distro)
 
+#$(distro): lispbox
+#	$(MAKE) -f OSXpackage.mk clean all NAME=$(distro) LISPBOX_VERSION=$(LISPBOX_VERSION) LISPBOX_LISP=$(lisp)
+
 $(distro): lispbox
-	$(MAKE) -f OSXpackage.mk clean all NAME=$(distro) LISPBOX_VERSION=$(LISPBOX_VERSION) LISPBOX_LISP=$(lisp)
+	$(MAKE) -f OSXdiskImage.mk clean all NAME=$(distro) LISPBOX_VERSION=$(LISPBOX_VERSION) LISPBOX_LISP=$(lisp)
 
 endif
 
@@ -234,7 +251,7 @@ endif
 
 
 $(prefix)/$(sbcl)/lispbox-register.el:    lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"bin\" \"sbcl\"))
-$(prefix)/$(openmcl)/lispbox-register.el: lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"scripts\" \"openmcl\"))
+$(prefix)/$(openmcl)/lispbox-register.el: lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"scripts\" \"$(OPENMCL_SCRIPT)\"))
 
 $(prefix)/%/lispbox-register.el: $(lisp)
 	echo "(push (list '$(lisp) (list $(lisppath))) slime-lisp-implementations)" > $@
