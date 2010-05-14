@@ -29,7 +29,7 @@
 (defparameter *fasl-directory* 
   (merge-pathnames
    (make-pathname
-    :directory `(:relative ".lispbox" "fasl" ,(swank-loader::unique-directory-name)))
+    :directory `(:relative ".lispbox" "fasl" ,(swank-loader::unique-dir-name)))
    (user-homedir-pathname)))
 
 (defmethod output-files :around ((operation compile-op) (c source-file))

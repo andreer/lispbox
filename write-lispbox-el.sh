@@ -49,7 +49,7 @@ fi
 
 cat <<EOF
 (require 'slime)
-(slime-setup)
+(slime-setup '(slime-fancy slime-asdf slime-banner))
 (lispbox-find-lisps)
 
 (provide 'lispbox)
