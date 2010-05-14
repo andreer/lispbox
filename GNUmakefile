@@ -9,8 +9,8 @@
 
 include GNUmakefile.vars
 
-#LISPBOX_LISP            := sbcl
-LISPBOX_LISP            := openmcl
+LISPBOX_LISP            := sbcl
+#LISPBOX_LISP            := openmcl
 GNU_LINUX_EMACS_VERSION := 23.2
 WINDOWS_EMACS_VERSION   := 23.2
 CLISP_VERSION           := 2.41
