@@ -43,7 +43,8 @@ components whose source has not changed.)
  main Lispbox GNUmakefile treats Clozure like Allegro, as a component
  that it knows how to unpack into the right place. Download the binary
  distribution you want to use and put it in the binary-archives
- directory.
+ directory. Make sure to also set the correct values for your platform
+ in the GNUmakefile.
 
  SBCL: To build SBCL you need a version of SBCL already installed and
  in your path. (SBCL can, in fact, be cross compiled with other Common
