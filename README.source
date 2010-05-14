@@ -52,13 +52,14 @@ components whose source has not changed.)
  distribution and install it in the normal way and then download a
  source distribution and put it in the source-achives directory.
 
+ To build SBCL 1.0.38 on OS X 10.6 you'll need to apply this patch:
+ https://bugs.launchpad.net/sbcl/+bug/421779
+
  CLISP: Since CLISP can be built from scratch using just a C compiler
  all you need to build a CLISP Lispbox is a source distribution of
  CLISP which you should save in the source-archives directory. The
  main GNUmakefile knows how to take it from there.
 
- SLIME:
-
-    http://common-lisp.net/project/slime/slime-1.2.tar.gz
- 
-
+ SLIME: You'll need the CVS version of SLIME for it to work with
+ recent versions of emacs. You can download a CVS snapshot from
+ http://common-lisp.net/project/slime/snapshots/slime-current.tgz
