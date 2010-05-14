@@ -41,9 +41,9 @@ if [ ! -z "${SBCL_DIR}" ]; then
 EOF
 fi
 
-if [ ! -z "${OPENMCL_DIR}" ]; then
+if [ ! -z "${CLOZURECL_DIR}" ]; then
     cat <<EOF
-(setenv "CCL_DEFAULT_DIRECTORY" (lispbox-file "${OPENMCL_DIR}"))
+(setenv "CCL_DEFAULT_DIRECTORY" (lispbox-file "${CLOZURECL_DIR}"))
 EOF
 fi
 

@@ -44,7 +44,7 @@ ifeq ($(os),Windows)
 staging-archives/$(THING).tar.gz: staging/$(THING)
 	(cd staging; tar czf - $(THING)) > $@
 
-staging/$(THING): binary-archives/$(THING)-fullbin-i386.tar.gz 
+staging/$(THING): binary-archives/$(THING)-bin-i386.zip
 	cat $< | (cd staging; tar xzf -)
 
 endif

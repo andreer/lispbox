@@ -1,13 +1,9 @@
 include GNUmakefile.vars
 
-lisps := clisp
+lisps := clisp clozurecl
 
 ifneq ($(os),Windows)
 lisps += allegro sbcl
-endif
-
-ifeq ($(os),Darwin)
-lisps += openmcl
 endif
 
 all: $(lisps)

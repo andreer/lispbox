@@ -10,19 +10,15 @@
 include GNUmakefile.vars
 
 #LISPBOX_LISP            := sbcl
-LISPBOX_LISP            := openmcl
+LISPBOX_LISP            := clozurecl
 GNU_LINUX_EMACS_VERSION := 23.2
 WINDOWS_EMACS_VERSION   := 23.2
 CLISP_VERSION           := 2.41
 ALLEGRO_VERSION         := 70_trial
 SBCL_VERSION            := 1.0.38
-#OPENMCL_VERSION         := 1.0
-OPENMCL_VERSION         := 070408
-OPENMCL_PLATFORM        := darwinx8664
-#OPENMCL_PLATFORM        := darwinppc
-OPENMCL_RELEASE         := snapshot
-#OPENMCL_SCRIPT         	:= openmcl
-OPENMCL_SCRIPT         	:= openmcl64
+CLOZURECL_VERSION       := 1.5
+CLOZURECL_PLATFORM	:= linuxx86
+CLOZURECL_SCRIPT	:= lx86cl
 SLIME_VERSION           := 20100514.151447
 PRACTICALS_VERSION      := 1.0.3
 PORTABLEASERVE_VERSION  := 1.2.35
@@ -40,7 +36,7 @@ endif
 clisp   := clisp-$(CLISP_VERSION)
 allegro := acl$(ALLEGRO_VERSION)
 sbcl    := sbcl-$(SBCL_VERSION)
-openmcl := openmcl-$(OPENMCL_PLATFORM)-$(OPENMCL_RELEASE)-$(OPENMCL_VERSION)
+clozurecl := ccl-$(CLOZURECL_VERSION)-$(CLOZURECL_PLATFORM)
 
 lisp       := $($(LISPBOX_LISP))
 slime      := slime-$(SLIME_VERSION)
@@ -109,7 +105,7 @@ $(LISPBOX_HOME)-source.tar.gz:
 	cp README.source $(prefix)
 	cp write-lispbox-el.sh $(prefix)
 	cp write-lispbox.sh $(prefix)
-	cp lispbox.bat $(prefix)
+	cp new-lispbox.bat $(prefix)
 	cp write-site-init-lisp.sh $(prefix)
 	(cd $(TOP); tar czf - $(LISPBOX_HOME)) > $@
 
@@ -172,7 +168,7 @@ distro := $(if $(JUST_LISP),$(distro_just_lisp),$(if $(NO_EMACS),$(distro_no_ema
 distro: $(distro)
 
 $(distro): lispbox
-	(cd $(TOP); tar czf - $(LISPBOX_HOME)) > $@
+	(cd $(TOP); zip --recurse-paths - $(LISPBOX_HOME)) > $@
 endif
 
 
@@ -214,13 +210,13 @@ $(lispbox_script_dir)/lispbox.bat: lispbox.bat
 	cp $< $@
 
 $(lispbox_script_dir)/lispbox.sh: write-lispbox.sh $(prefix)
-	SBCL_DIR=$(sbcl) OPENMCL_DIR=$(openmcl) $(SH) $< > $@
+	SBCL_DIR=$(sbcl) CLOZURECL_DIR=$(clozurecl) $(SH) $< > $@
 	chmod +x $@
 
 foo: $(lispbox_elisp_dir)/lispbox.el
 
 $(lispbox_elisp_dir)/lispbox.el: write-lispbox-el.sh $(if $(NO_EMACS),$(prefix),$(emacs))
-	SLIME_DIR=$(slime) SBCL_DIR=$(sbcl) OPENMCL_DIR=$(openmcl) $(SH) $< > $@
+	SLIME_DIR=$(slime) SBCL_DIR=$(sbcl) CLOZURECL_DIR=$(clozurecl) $(SH) $< > $@
 
 $(prefix)/$(slime)/site-init.lisp: write-site-init-lisp.sh $(prefix)/$(slime) 
 	PRACTICALS=$(practicals) PORTABLEASERVE=$(portableaserve) $(SH) $< > $@
@@ -251,10 +247,10 @@ endif
 
 
 $(prefix)/$(sbcl)/lispbox-register.el:    lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"bin\" \"sbcl\"))
-$(prefix)/$(openmcl)/lispbox-register.el: lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"scripts\" \"$(OPENMCL_SCRIPT)\"))
+$(prefix)/$(clozurecl)/lispbox-register.el: lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"$(CLOZURECL_SCRIPT)\"))
 
 $(prefix)/%/lispbox-register.el: $(lisp)
-	echo "(push (list '$(lisp) (list $(lisppath))) slime-lisp-implementations)" > $@
+	echo "(push (list '$(LISPBOX_LISP) (list $(lisppath))) slime-lisp-implementations)" > $@
 	if [ ! -z "$(license)" ]; \
 	  then echo "(lispbox-install-lisp-license (list $(license)) \"$(*)\")" >> $@; \
 	fi
@@ -266,10 +262,7 @@ endif
 
 # Unpacking pre-built staging archives into prefix.
 
-components := $(emacs) $(allegro) $(clisp) $(sbcl) $(slime) $(practicals) $(portableaserve)
-ifeq ($(os),Darwin)
-components += $(openmcl)
-endif
+components := $(emacs) $(allegro) $(clisp) $(sbcl) $(slime) $(practicals) $(portableaserve) $(clozurecl)
 
 
 $(components): %: staging-archives/%.tar.gz $(prefix)
@@ -283,7 +276,7 @@ $(sbcl): staging-archives/$(sbcl).tar.gz $(prefix)
 staging-archives/$(emacs).tar.gz:          makefile := GNUmakefile.emacs
 staging-archives/$(allegro).tar.gz:        makefile := GNUmakefile.allegro
 staging-archives/$(clisp).tar.gz:          makefile := GNUmakefile.clisp
-staging-archives/$(openmcl).tar.gz:        makefile := GNUmakefile.openmcl
+staging-archives/$(clozurecl).tar.gz:        makefile := GNUmakefile.clozurecl
 staging-archives/$(sbcl).tar.gz:           makefile := GNUmakefile.sbcl
 staging-archives/$(slime).tar.gz:          makefile := GNUmakefile.slime
 staging-archives/$(practicals).tar.gz:     makefile := GNUmakefile.practicals
