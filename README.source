@@ -38,9 +38,9 @@ components whose source has not changed.)
  the user where they saved the license file and installs it in the
  right place.
 
- OpenMCL: OpenMCL is tricky to build from source. Thus I prefer to use
- the binary distributions provided by the OpenMCL developers. Thus the
- main Lispbox GNUmakefile treats OpenMCL like Allegro, as a component
+ Clozure: Clozure is tricky to build from source. Thus I prefer to use
+ the binary distributions provided by the Clozure developers. Thus the
+ main Lispbox GNUmakefile treats Clozure like Allegro, as a component
  that it knows how to unpack into the right place. Download the binary
  distribution you want to use and put it in the binary-archives
  directory.
