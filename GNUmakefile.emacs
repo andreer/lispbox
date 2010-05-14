@@ -27,30 +27,15 @@ endif
 
 ifeq ($(os),Darwin)
 
-EMACS_VERSION := emacs-20051204.220257
 sourcetar := $(EMACS_VERSION).tar.gz 
 
-staging-archives/$(THING).tar.gz: staging/Applications/$(THING)
-	(cd staging/Applications/; tar czf - $(THING)) > $@
+staging-archives/$(THING).tar.gz: staging/$(EMACS_VERSION)/nextstep/$(THING)
+	(cd staging/$(EMACS_VERSION)/nextstep; tar czf - $(THING)) > $@
 
-staging/Applications/Emacs.app: staging/Emacs.pax
-	cd staging; pax -r -f Emacs.pax './Applications/Emacs.app'
-
-staging/Emacs.pax: staging/Emacs.pax.gz
-	cd staging; gunzip Emacs.pax.gz
-
-.SECONDARY: /Volumes/Emacs
-
-staging/Emacs.pax.gz: /Volumes/Emacs
-	cp /Volumes/Emacs/Emacs.pkg/Contents/Resources/Emacs.pax.gz staging/Emacs.pax.gz
-
-/Volumes/Emacs: staging/$(EMACS_VERSION)/mac/EmacsInstaller.dmg
-	hdiutil attach staging/$(EMACS_VERSION)/mac/EmacsInstaller.dmg
-
-staging/$(EMACS_VERSION)/mac/EmacsInstaller.dmg: source-archives/$(sourcetar)
+staging/$(EMACS_VERSION)/nextstep/$(THING): source-archives/$(sourcetar)
 	mkdir -p staging
 	cat $< | (cd staging; tar xzf - )
-	cd staging/$(EMACS_VERSION)/mac; ./make-package --self-contained
+	cd staging/$(EMACS_VERSION); ./configure --with-ns && make install
 
 endif
 
