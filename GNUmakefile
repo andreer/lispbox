@@ -11,11 +11,11 @@ include GNUmakefile.vars
 
 #LISPBOX_LISP            := sbcl
 LISPBOX_LISP            := openmcl
-GNU_LINUX_EMACS_VERSION := 21.4
-WINDOWS_EMACS_VERSION   := 21.3
+GNU_LINUX_EMACS_VERSION := 23.2
+WINDOWS_EMACS_VERSION   := 23.2
 CLISP_VERSION           := 2.41
 ALLEGRO_VERSION         := 70_trial
-SBCL_VERSION            := 1.0.3
+SBCL_VERSION            := 1.0.38
 #OPENMCL_VERSION         := 1.0
 OPENMCL_VERSION         := 070408
 OPENMCL_PLATFORM        := darwinx8664
@@ -23,7 +23,7 @@ OPENMCL_PLATFORM        := darwinx8664
 OPENMCL_RELEASE         := snapshot
 #OPENMCL_SCRIPT         	:= openmcl
 OPENMCL_SCRIPT         	:= openmcl64
-SLIME_VERSION           := 20070306.205402
+SLIME_VERSION           := 20100514.151447
 PRACTICALS_VERSION      := 1.0.3
 PORTABLEASERVE_VERSION  := 1.2.35
 
