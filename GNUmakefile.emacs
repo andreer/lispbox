@@ -27,6 +27,7 @@ endif
 
 ifeq ($(os),Darwin)
 
+EMACS_VERSION := emacs-23.2
 sourcetar := $(EMACS_VERSION).tar.gz 
 
 staging-archives/$(THING).tar.gz: staging/$(EMACS_VERSION)/nextstep/$(THING)
