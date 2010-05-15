@@ -9,16 +9,16 @@
 
 include GNUmakefile.vars
 
-#LISPBOX_LISP            := sbcl
-LISPBOX_LISP            := clozurecl
+LISPBOX_LISP            := sbcl
+#LISPBOX_LISP            := clozurecl
 GNU_LINUX_EMACS_VERSION := 23.2
 WINDOWS_EMACS_VERSION   := 23.2
 CLISP_VERSION           := 2.41
 ALLEGRO_VERSION         := 70_trial
-SBCL_VERSION            := 1.0.38
+SBCL_VERSION            := 1.0.37a
 CLOZURECL_VERSION       := 1.5
-CLOZURECL_PLATFORM	:= linuxx86
-CLOZURECL_SCRIPT	:= lx86cl
+CLOZURECL_PLATFORM	:= darwinx86
+CLOZURECL_SCRIPT	:= dx86cl
 SLIME_VERSION           := 20100514.151447
 PRACTICALS_VERSION      := 1.0.3
 PORTABLEASERVE_VERSION  := 1.2.35

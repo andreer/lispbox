@@ -46,6 +46,6 @@ staging-archives/$(THING).tar.gz: staging/$(THING)
 	(cd staging; tar czf - $(THING)) > $@
 
 staging/$(THING): binary-archives/$(THING)-bin-i386.zip
-	cat $< | (cd staging; tar xzf -)
+	(cd staging; unzip ../$<)
 
 endif

@@ -15,7 +15,7 @@ rem
 if %LISPBOX_HOME%==%LISPBOX_HOME% goto noenv
 :start
 
-set EMACS=%LISPBOX_HOME%/emacs-23.1/bin/runemacs.exe
+set EMACS=%LISPBOX_HOME%/emacs-23.2/bin/runemacs.exe
 set TO_EVAL="(progn (load \"lispbox\") (slime))"
 
 %EMACS% --no-init-file --no-site-file --eval=%TO_EVAL%
