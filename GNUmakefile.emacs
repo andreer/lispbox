@@ -18,7 +18,7 @@ staging/$(THING)/src/thing: staging/$(THING)/src/Makefile
 	cd staging/$(THING); $(MAKE)
 
 staging/$(THING)/src/Makefile: staging/$(THING)
-	cd staging/$(THING); ./configure --with-x --prefix=$(prefix)/$(THING)
+	cd staging/$(THING); ./configure --with-gif=no --with-tiff=no --with-x --prefix=$(prefix)/$(THING)
 
 staging/$(THING): source-archives/$(THING).tar.gz 
 	cat $< | (cd staging; tar xzf -)
