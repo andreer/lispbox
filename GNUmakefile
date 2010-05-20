@@ -247,7 +247,14 @@ endif
 
 
 $(prefix)/$(sbcl)/lispbox-register.el:    lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"bin\" \"sbcl\"))
+
+ifneq ($(os),Windows)
 $(prefix)/$(clozurecl)/lispbox-register.el: lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) \"$(CLOZURECL_SCRIPT)\"))
+endif
+
+ifeq ($(os),Windows)
+$(prefix)/$(clozurecl)/lispbox-register.el: lisppath := (lispbox-list-to-filename (list (file-name-directory load-file-name) (if (getenv \"PROGRAMW6432\") \"wx86cl64.exe\" \"wx86cl.exe\")))
+endif
 
 $(prefix)/%/lispbox-register.el: $(lisp)
 	echo "(push (list '$(LISPBOX_LISP) (list $(lisppath))) slime-lisp-implementations)" > $@
