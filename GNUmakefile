@@ -99,8 +99,6 @@ $(LISPBOX_HOME)-source.tar.gz:
 	cp GNUmakefile.slime $(prefix)
 	cp GNUmakefile.vars $(prefix)
 	cp Info.plist $(prefix)
-	cp OSXpackage.mk $(prefix)
-	cp OSXdiskImage.mk $(prefix)
 	cp README $(prefix)
 	cp README.source $(prefix)
 	cp write-lispbox-el.sh $(prefix)
@@ -136,25 +134,17 @@ $(distro): lispbox
 	(cd $(TOP); tar czf - $(LISPBOX_HOME)) > $@
 endif
 
-#ifeq ($(os),Darwin)
-#distro_with_emacs := LispboxInstaller-$(LISPBOX_VERSION)-with-$(lisp).dmg
-#distro_no_emacs   := LispboxInstallerNoEmacs-$(LISPBOX_VERSION)-with-$(lisp).dmg
-#distro_just_lisp  := LispboxInstallerJustLisp-$(LISPBOX_VERSION)-$(lisp).dmg
-
 ifeq ($(os),Darwin)
-distro_with_emacs := Lispbox-$(LISPBOX_VERSION)-with-$(lisp).dmg
-distro_no_emacs   := LispboxNoEmacs-$(LISPBOX_VERSION)-with-$(lisp).dmg
-distro_just_lisp  := LispboxJustLisp-$(LISPBOX_VERSION)-$(lisp).dmg
+distro_with_emacs := Lispbox-$(LISPBOX_VERSION)-with-$(lisp).zip
+distro_no_emacs   := LispboxNoEmacs-$(LISPBOX_VERSION)-with-$(lisp).zip
+distro_just_lisp  := LispboxJustLisp-$(LISPBOX_VERSION)-$(lisp).zip
 
 distro := $(if $(JUST_LISP),$(distro_just_lisp),$(if $(NO_EMACS),$(distro_no_emacs),$(distro_with_emacs)))
 
 distro: $(distro)
 
-#$(distro): lispbox
-#	$(MAKE) -f OSXpackage.mk clean all NAME=$(distro) LISPBOX_VERSION=$(LISPBOX_VERSION) LISPBOX_LISP=$(lisp)
-
 $(distro): lispbox
-	$(MAKE) -f OSXdiskImage.mk clean all NAME=$(distro) LISPBOX_VERSION=$(LISPBOX_VERSION) LISPBOX_LISP=$(lisp)
+	(cd $(TOP); zip --recurse-paths - $(LISPBOX_HOME)) > $@
 
 endif
 
