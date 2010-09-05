@@ -9,19 +9,18 @@
 
 include GNUmakefile.vars
 
-LISPBOX_LISP            := sbcl
-#LISPBOX_LISP            := clozurecl
+#LISPBOX_LISP            := sbcl
+LISPBOX_LISP            := clozurecl
 GNU_LINUX_EMACS_VERSION := 23.2
 WINDOWS_EMACS_VERSION   := 23.2
 CLISP_VERSION           := 2.41
 ALLEGRO_VERSION         := 70_trial
-SBCL_VERSION            := 1.0.37a
+SBCL_VERSION            := 1.0.42
 CLOZURECL_VERSION       := 1.5
 CLOZURECL_PLATFORM	:= darwinx86
-CLOZURECL_SCRIPT	:= dx86cl
-SLIME_VERSION           := 20100514.151447
+CLOZURECL_SCRIPT	:= dx86cl64
+SLIME_VERSION           := 20100905.081054
 PRACTICALS_VERSION      := 1.0.3
-PORTABLEASERVE_VERSION  := 1.2.35
 
 ifeq ($(os),Linux)
 emacs := emacs-$(GNU_LINUX_EMACS_VERSION)
@@ -93,7 +92,6 @@ $(LISPBOX_HOME)-source.tar.gz:
 	cp GNUmakefile.base $(prefix)
 	cp GNUmakefile.clisp $(prefix)
 	cp GNUmakefile.emacs $(prefix)
-	cp GNUmakefile.portableaserve $(prefix)
 	cp GNUmakefile.practicals $(prefix)
 	cp GNUmakefile.sbcl $(prefix)
 	cp GNUmakefile.slime $(prefix)
@@ -187,10 +185,6 @@ lispbox: $(prefix)/$(slime)/site-init.lisp
 lispbox: $(lispbox_elisp_dir)/lispbox.el 
 lispbox: $(prefix)/asdf.lisp 
 lispbox: $(prefix)/asdf-extensions.lisp
-ifneq ($(LISPBOX_LISP),allegro)
-portableaserve := portableaserve-$(PORTABLEASERVE_VERSION)
-lispbox: $(portableaserve)
-endif # not allegro
 endif # not JUST_LISP
 
 lispbox: $(lisp)
@@ -209,7 +203,7 @@ $(lispbox_elisp_dir)/lispbox.el: write-lispbox-el.sh $(if $(NO_EMACS),$(prefix),
 	SLIME_DIR=$(slime) SBCL_DIR=$(sbcl) CLOZURECL_DIR=$(clozurecl) $(SH) $< > $@
 
 $(prefix)/$(slime)/site-init.lisp: write-site-init-lisp.sh $(prefix)/$(slime) 
-	PRACTICALS=$(practicals) PORTABLEASERVE=$(portableaserve) $(SH) $< > $@
+	PRACTICALS=$(practicals) $(SH) $< > $@
 	chmod 0644 $@
 
 $(prefix)/asdf.lisp: asdf.lisp
@@ -259,7 +253,7 @@ endif
 
 # Unpacking pre-built staging archives into prefix.
 
-components := $(emacs) $(allegro) $(clisp) $(sbcl) $(slime) $(practicals) $(portableaserve) $(clozurecl)
+components := $(emacs) $(allegro) $(clisp) $(sbcl) $(slime) $(practicals) $(clozurecl)
 
 
 $(components): %: staging-archives/%.tar.gz $(prefix)
@@ -277,7 +271,6 @@ staging-archives/$(clozurecl).tar.gz:        makefile := GNUmakefile.clozurecl
 staging-archives/$(sbcl).tar.gz:           makefile := GNUmakefile.sbcl
 staging-archives/$(slime).tar.gz:          makefile := GNUmakefile.slime
 staging-archives/$(practicals).tar.gz:     makefile := GNUmakefile.practicals
-staging-archives/$(portableaserve).tar.gz: makefile := GNUmakefile.portableaserve
 
 staging-archives/%.tar.gz:
 	$(MAKE) -f $(makefile) THING=$*

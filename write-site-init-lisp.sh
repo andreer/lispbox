@@ -58,9 +58,3 @@ EOF
 cat <<EOF
 (register-source-directory (lispbox-file (make-pathname :directory '(:relative "${PRACTICALS}"))))
 EOF
-
-if [ ! -z "${PORTABLEASERVE}" ]; then
-    cat <<EOF
-(register-source-directory (lispbox-file (make-pathname :directory '(:relative "${PORTABLEASERVE}"))))
-EOF
-fi
