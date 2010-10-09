@@ -1,0 +1,6 @@
+all: staging-archives/$(THING).tar.gz
+
+include GNUmakefile.base
+
+staging-archives/$(THING).tar.gz: binary-archives/$(THING).tar.gz
+	cp $< $@

@@ -37,24 +37,26 @@ cat <<EOF
     :type nil
     :defaults *load-pathname*)))
 
-#-asdf
-(progn
-  (multiple-value-bind (value error)
-      (ignore-errors (require :asdf))
-    (if error
-      (load (lispbox-file (make-pathname :name "asdf" :type "lisp"))))))
+(load (lispbox-file (make-pathname :directory '(:relative "quicklisp") :name "setup" :type "lisp")))
 
-(load (lispbox-file (make-pathname :name "asdf-extensions" :type "lisp")))
+;#-asdf
+;(progn
+;  (multiple-value-bind (value error)
+;      (ignore-errors (require :asdf))
+;    (if error
+;      (load (lispbox-file (make-pathname :name "asdf" :type "lisp"))))))
+
+;(load (lispbox-file (make-pathname :name "asdf-extensions" :type "lisp")))
 
 ;;; Clean up CL-USER package
 (loop with cl = (find-package :cl)
    for p in (package-use-list :cl-user) 
    unless (eql p cl) do (unuse-package p :cl-user))
-(use-package :asdf :cl-user)
-(use-package :com.gigamonkeys.asdf-extensions :cl-user)
+;(use-package :asdf :cl-user)
+;(use-package :com.gigamonkeys.asdf-extensions :cl-user)
 
 EOF
 
-cat <<EOF
-(register-source-directory (lispbox-file (make-pathname :directory '(:relative "${PRACTICALS}"))))
-EOF
+#cat <<EOF
+#(register-source-directory (lispbox-file (make-pathname :directory '(:relative "${PRACTICALS}"))))
+#EOF

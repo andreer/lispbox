@@ -19,8 +19,9 @@ SBCL_VERSION            := 1.0.42
 CLOZURECL_VERSION       := 1.5
 CLOZURECL_PLATFORM	:= darwinx86
 CLOZURECL_SCRIPT	:= dx86cl64
-SLIME_VERSION           := 20100905.081054
+SLIME_VERSION           := 20101009.090831
 PRACTICALS_VERSION      := 1.0.3
+QUICKLISP_VERSION	:= beta-2010-10-09
 
 ifeq ($(os),Linux)
 emacs := emacs-$(GNU_LINUX_EMACS_VERSION)
@@ -40,6 +41,7 @@ clozurecl := ccl-$(CLOZURECL_VERSION)-$(CLOZURECL_PLATFORM)
 lisp       := $($(LISPBOX_LISP))
 slime      := slime-$(SLIME_VERSION)
 practicals := practicals-$(PRACTICALS_VERSION)
+quicklisp  := quicklisp-$(QUICKLISP_VERSION)
 
 ifeq ($(os),Darwin)
 lispbox_script_dir := $(prefix)/Emacs.app/Contents/MacOS
@@ -180,7 +182,8 @@ endif # Darwin
 endif # not NO_EMACS
 
 lispbox: $(slime)
-lispbox: $(practicals)
+# lispbox: $(practicals)
+lispbox: $(quicklisp)
 lispbox: $(prefix)/$(slime)/site-init.lisp
 lispbox: $(lispbox_elisp_dir)/lispbox.el 
 lispbox: $(prefix)/asdf.lisp 
@@ -253,7 +256,7 @@ endif
 
 # Unpacking pre-built staging archives into prefix.
 
-components := $(emacs) $(allegro) $(clisp) $(sbcl) $(slime) $(practicals) $(clozurecl)
+components := $(emacs) $(allegro) $(clisp) $(sbcl) $(slime) $(practicals) $(quicklisp) $(clozurecl)
 
 
 $(components): %: staging-archives/%.tar.gz $(prefix)
@@ -271,6 +274,7 @@ staging-archives/$(clozurecl).tar.gz:        makefile := GNUmakefile.clozurecl
 staging-archives/$(sbcl).tar.gz:           makefile := GNUmakefile.sbcl
 staging-archives/$(slime).tar.gz:          makefile := GNUmakefile.slime
 staging-archives/$(practicals).tar.gz:     makefile := GNUmakefile.practicals
+staging-archives/$(quicklisp).tar.gz:      makefile := GNUmakefile.quicklisp
 
 staging-archives/%.tar.gz:
 	$(MAKE) -f $(makefile) THING=$*
